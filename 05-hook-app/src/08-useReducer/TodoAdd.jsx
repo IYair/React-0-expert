@@ -2,20 +2,20 @@ import { useForm } from "../hooks/useForm"
 
 export const TodoAdd = ({ onNewTodo }) => {
 
-  const { desciption, formState, onInputChange, onResetForm } = useForm({
-    desciption: '',
+  const { description, onInputChange, onResetForm } = useForm({
+    description: '',
   })
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    if (desciption.length <= 1) {
+    if (description.length <= 1) {
       return;
     }
 
     const newTodo = {
       id: new Date().getTime(),
       done: false,
-      desciption: desciption
+      description: description
     }
     onNewTodo(newTodo);
     onResetForm();
@@ -28,8 +28,8 @@ export const TodoAdd = ({ onNewTodo }) => {
         type="text"
         placeholder="Que hay que hacer?"
         className="form-control"
-        name="desciption"
-        value={desciption}
+        name="description"
+        value={description}
         onChange={onInputChange}
       />
       <button
